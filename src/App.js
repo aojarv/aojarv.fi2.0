@@ -15,8 +15,6 @@ const Container = styled(({ ...other }) => <Grid container={true} {...other} />)
 const Item = styled(({ ...other }) => <Grid item={true} {...other} />)``;
 
 const App = () => {
-	const [ theme, setTheme ] = React.useState({});
-
 	const StyledText = styled.div`
 		width: fit-content;
 		height: fit-content;
@@ -25,7 +23,7 @@ const App = () => {
 		padding: 1rem;
 		margin: 0.5rem;
 		border-radius: 0.5rem;
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 	`;
 
 	const StyledPic = styled.div`
@@ -84,6 +82,26 @@ const App = () => {
 		</StyledPic>
 	];
 
+	const items2 = [
+		<StyledText style={{ fontSize: '2.6rem' }}>Antti Järveläinen</StyledText>,
+
+		<StyledPic>
+			<a
+				href="https://www.linkedin.com/in/antti-j%C3%A4rvel%C3%A4inen-48339919a/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<img style={{ width: '5rem', borderRadius: '0.25rem' }} src={linkedin} alt="LinkedIn" />
+			</a>
+		</StyledPic>,
+		<StyledPic>
+			<a href="https://github.com/aojarv" target="_blank" rel="noopener noreferrer">
+				<img style={{ width: '5rem', borderRadius: '0.25rem' }} src={github} alt="LinkedIn" />
+			</a>
+		</StyledPic>
+	]
+
+	/*
 	return (
 		<React.Fragment>
 			<Container
@@ -118,13 +136,34 @@ const App = () => {
 								color: 'black'
 							}}
 						>
-							{items.map((item) => item)}
+							{items2.map((item) => (<div style={{ border: '0px solid black', borderRadius: '8px', margin: '5px' }}>{item}</div>))}
 						</Item>
 					</Container>
 				</Item>
 			</Container>
 		</React.Fragment>
 	);
+	*/
+	return (
+		<React.Fragment>
+			<Container
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					minHeight: '100vh',
+					backgroundImage: `url(${bg})`,
+					backgroundSize: 'cover',
+					backgroundRepeat: 'no-repeat'
+				}}
+			>
+				<div style={{ width: '80%', height: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+					<div>{items2[0]}</div>
+					<div style={{ display: 'flex', flexDirection: 'row' }}>{items2[1]}{items2[2]}</div>
+				</div>
+			</Container>
+		</React.Fragment>
+	)
 };
 
 export default App;
